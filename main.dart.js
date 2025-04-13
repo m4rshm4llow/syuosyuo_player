@@ -29017,12 +29017,12 @@ a84:function a84(){},
 hv:function hv(a){this.a=a},
 aI3(){var s=0,r=A.L(t.H),q,p,o,n,m,l,k
 var $async$aI3=A.H(function(a,b){if(a===1)return A.I(b,r)
-while(true)switch(s){case 0:if($.a_==null)A.aLB()
+while(true)switch(s){case 0:s=2
+return A.P(A.aHW(),$async$aI3)
+case 2:if($.a_==null)A.aLB()
 $.a_.toString
 A.aQ7(new A.aI6())
-s=2
-return A.P(A.aHW(),$async$aI3)
-case 2:q=A.aP1(self.document)
+q=A.aP1(self.document)
 if(q==null)A.a7(A.dB("Please add a <base> element to your index.html"))
 if(!J.aNF(q,"/"))A.a7(A.dB('The base href has to end with a "/" to work correctly'))
 q=A.bdf(A.aMv(A.ce(q,0,null).gcq()))
