@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:syuosyuo_player/provider/data_provider.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
@@ -25,11 +26,17 @@ class WatchScreen extends HookConsumerWidget {
       );
     }, [videoId]);
 
+    final breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
+    final maxWidth = switch (breakpoint.name) {
+      DESKTOP => MediaQuery.sizeOf(context).width * 0.75,
+      _ => MediaQuery.sizeOf(context).width,
+    };
+
     return Scaffold(
       body: Column(
         children: [
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width * 0.75),
+            constraints: BoxConstraints(maxWidth: maxWidth),
             child: YoutubePlayer(controller: controller),
           ),
           Gap(8),
