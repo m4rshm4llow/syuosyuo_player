@@ -27,17 +27,20 @@ class WatchScreen extends HookConsumerWidget {
     }, [videoId]);
 
     final breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
-    final maxWidth = switch (breakpoint.name) {
-      DESKTOP => MediaQuery.sizeOf(context).width * 0.75,
-      _ => MediaQuery.sizeOf(context).width,
+
+    // NOTE: デスクトップ版の動画プレイヤーの最大高さを全高の50%に制限
+    final constraints = switch (breakpoint.name) {
+      DESKTOP => BoxConstraints(maxHeight: MediaQuery.sizeOf(context).height * 0.5),
+      _ => BoxConstraints(),
     };
 
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: maxWidth),
-            child: YoutubePlayer(controller: controller),
+            constraints: constraints,
+            child: AspectRatio(aspectRatio: 16 / 9, child: YoutubePlayer(controller: controller)),
           ),
           Gap(8),
           Expanded(

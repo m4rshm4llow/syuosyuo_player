@@ -15,9 +15,9 @@ class HomeScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final archives = ref.watch(dataProvider).valueOrNull?.archives ?? [];
     final breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
-    final (fontSize, imageSize) = switch (breakpoint.name) {
-      MOBILE || TABLET => (20.0, 80.0),
-      (_) => (24.0, 100.0),
+    final (fontSize, imageSize, constraints) = switch (breakpoint.name) {
+      MOBILE || TABLET => (20.0, 80.0, BoxConstraints()),
+      (_) => (24.0, 100.0, BoxConstraints(maxHeight: MediaQuery.sizeOf(context).height * 0.5)),
     };
 
     return Scaffold(
@@ -25,33 +25,36 @@ class HomeScreen extends HookConsumerWidget {
         child: Column(
           children: [
             if (archives.isNotEmpty)
-              CarouselSlider.builder(
-                itemCount: archives.length,
-                itemBuilder: (context, index, realIndex) {
-                  final videoId = archives[index].videoId;
-                  return GestureDetector(
-                    onTap: () {
-                      WatchPageRoute(videoId: videoId).push(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: AspectRatio(
-                        aspectRatio: 16 / 9,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            'https://img.youtube.com/vi/$videoId/0.jpg',
-                            fit: BoxFit.cover,
+              ConstrainedBox(
+                constraints: constraints,
+                child: CarouselSlider.builder(
+                  itemCount: archives.length,
+                  itemBuilder: (context, index, realIndex) {
+                    final videoId = archives[index].videoId;
+                    return GestureDetector(
+                      onTap: () {
+                        WatchPageRoute(videoId: videoId).push(context);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: AspectRatio(
+                          aspectRatio: 16 / 9,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(
+                              'https://img.youtube.com/vi/$videoId/0.jpg',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
-                options: CarouselOptions(
-                  autoPlay: true,
-                  autoPlayCurve: Curves.easeInOut,
-                  viewportFraction: 1,
+                    );
+                  },
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    autoPlayCurve: Curves.easeInOut,
+                    viewportFraction: 1,
+                  ),
                 ),
               ),
             Gap(16),
