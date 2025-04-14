@@ -103,36 +103,42 @@ class _Drawer extends HookConsumerWidget {
           ListTile(
             title: Text('ホーム'),
             onTap: () {
+              Navigator.of(context).pop();
               HomePageRoute().go(context);
             },
           ),
           ListTile(
             title: Text('歌枠一覧'),
             onTap: () {
+              Navigator.of(context).pop();
               AchivesPageRoute().go(context);
             },
           ),
           ListTile(
             title: Text('歌唱曲一覧'),
             onTap: () {
+              Navigator.of(context).pop();
               SongPageRoute().go(context);
             },
           ),
           ListTile(
             title: Text('アーティスト一覧'),
             onTap: () {
+              Navigator.of(context).pop();
               ArtistsPageRoute().go(context);
             },
           ),
           ListTile(
             title: Text('サムネイルギャラリー'),
             onTap: () {
+              Navigator.of(context).pop();
               ThumbnailPageRoute().go(context);
             },
           ),
           ListTile(
             title: Text('ツール'),
             onTap: () {
+              Navigator.of(context).pop();
               ToolPageRoute().go(context);
             },
           ),
@@ -155,6 +161,7 @@ class _Drawer extends HookConsumerWidget {
           ListTile(
             title: Text('クレジット'),
             onTap: () {
+              Navigator.of(context).pop();
               CreditPageRoute().go(context);
             },
           ),
