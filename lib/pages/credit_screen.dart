@@ -40,8 +40,7 @@ class CreditScreen extends StatelessWidget {
               Row(
                 children: [
                   for (final iamge in Assets.images.values) ...[
-                    Image.asset(iamge.path, width: 80, height: 80, fit: BoxFit.cover),
-                    Gap(4),
+                    Image.asset(iamge.path, width: 66, height: 66, fit: BoxFit.cover),
                   ],
                 ],
               ),
