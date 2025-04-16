@@ -2,6 +2,8 @@
 
 登龍門BOX所属 第1号🐉ハイテンション秋生まれぎゃるVTuber😘🧡 [秋桜しゅお](https://x.com/SyuouSyuo)さんのファンアプリです。
 
+[DEMO](https://m4rshm4llow.github.io/syuosyuo_player/)
+
 ## クレジット
 
 ### 🪭 VTuber登龍門
