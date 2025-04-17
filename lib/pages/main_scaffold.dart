@@ -19,9 +19,9 @@ class MainScaffold extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // 2秒間なうろーでぃんぐ表示（日本語フォントがぐしゃるのを回避）
+    // 1秒なうろーでぃんぐ表示（日本語フォントがぐしゃるのを回避）
     final pendingFonts = useMemoized(() async {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
     });
     final future = useFuture(pendingFonts);
     if (future.connectionState == ConnectionState.waiting) {
