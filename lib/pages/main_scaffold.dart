@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:syuosyuo_player/gen/assets.gen.dart';
 import 'package:syuosyuo_player/pages/mobile_scaffold.dart';
 import 'package:syuosyuo_player/provider/data_provider.dart';
 import 'package:syuosyuo_player/router.dart';
 import 'package:syuosyuo_player/theme/widgets/theme_mode_button.dart';
 import 'package:url_launcher/link.dart';
 
-class MainScaffold extends StatelessWidget {
+class MainScaffold extends HookConsumerWidget {
   const MainScaffold({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // 2秒間なうろーでぃんぐ表示（日本語フォントがぐしゃるのを回避）
+    final pendingFonts = useMemoized(() async {
+      await Future.delayed(const Duration(seconds: 2));
+    });
+    final future = useFuture(pendingFonts);
+    if (future.connectionState == ConnectionState.waiting) {
+      return Scaffold(body: Center(child: _NowLoadingMochiShuo()));
+    }
+
     final breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
     return switch (breakpoint.name) {
       MOBILE || TABLET => MobileScaffold(navigationShell),
@@ -165,6 +177,45 @@ class _Drawer extends HookConsumerWidget {
           ],
         ],
       ),
+    );
+  }
+}
+
+/// フォントローディング後に少しだけ表示するもちしゅお
+class _NowLoadingMochiShuo extends HookConsumerWidget {
+  const _NowLoadingMochiShuo();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // フォントの読み込みを待機する
+    final pendingFonts = useMemoized(() async {
+      await GoogleFonts.pendingFonts([GoogleFonts.sawarabiGothic()]);
+    });
+    final future = useFuture(pendingFonts);
+    if (future.connectionState == ConnectionState.waiting) {
+      return const SizedBox.shrink();
+    }
+    final controller = useAnimationController(duration: const Duration(milliseconds: 500))
+      ..repeat();
+    final animation = useMemoized(() {
+      return Tween<double>(
+        begin: -10,
+        end: 10,
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
+    }, [controller]);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AnimatedBuilder(
+          animation: animation,
+          builder: (context, child) {
+            return Transform.translate(offset: Offset(0, animation.value), child: child);
+          },
+          child: Assets.images.mochiSyuoSmiling.image(width: 100, height: 100),
+        ),
+        Gap(16),
+        Text('なうろーでぃんぐ...'),
+      ],
     );
   }
 }
