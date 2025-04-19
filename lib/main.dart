@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:syuosyuo_player/gen/assets.gen.dart';
@@ -20,6 +21,8 @@ FutureOr<void> main() async {
     final license = await rootBundle.loadString(Assets.license.ofl);
     yield LicenseEntryWithLineBreaks(['Sawarabi Gothic (さわらびゴシック)'], license);
   });
+
+  await GoogleFonts.pendingFonts([GoogleFonts.sawarabiGothic()]);
 
   usePathUrlStrategy();
   runApp(ProviderScope(child: const MyApp()));
