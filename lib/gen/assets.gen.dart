@@ -12,21 +12,22 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/mochi_syuo.png
-  AssetGenImage get mochiSyuo => const AssetGenImage('assets/images/mochi_syuo.png');
+  /// File path: assets/images/mochi_syuo.webp
+  AssetGenImage get mochiSyuo => const AssetGenImage('assets/images/mochi_syuo.webp');
 
-  /// File path: assets/images/mochi_syuo_angry.png
-  AssetGenImage get mochiSyuoAngry => const AssetGenImage('assets/images/mochi_syuo_angry.png');
+  /// File path: assets/images/mochi_syuo_angry.webp
+  AssetGenImage get mochiSyuoAngry => const AssetGenImage('assets/images/mochi_syuo_angry.webp');
 
-  /// File path: assets/images/mochi_syuo_crying.png
-  AssetGenImage get mochiSyuoCrying => const AssetGenImage('assets/images/mochi_syuo_crying.png');
+  /// File path: assets/images/mochi_syuo_crying.webp
+  AssetGenImage get mochiSyuoCrying => const AssetGenImage('assets/images/mochi_syuo_crying.webp');
 
-  /// File path: assets/images/mochi_syuo_drooling.png
+  /// File path: assets/images/mochi_syuo_drooling.webp
   AssetGenImage get mochiSyuoDrooling =>
-      const AssetGenImage('assets/images/mochi_syuo_drooling.png');
+      const AssetGenImage('assets/images/mochi_syuo_drooling.webp');
 
-  /// File path: assets/images/mochi_syuo_smiling.png
-  AssetGenImage get mochiSyuoSmiling => const AssetGenImage('assets/images/mochi_syuo_smiling.png');
+  /// File path: assets/images/mochi_syuo_smiling.webp
+  AssetGenImage get mochiSyuoSmiling =>
+      const AssetGenImage('assets/images/mochi_syuo_smiling.webp');
 
   /// List of all assets
   List<AssetGenImage> get values => [
