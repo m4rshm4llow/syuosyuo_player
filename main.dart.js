@@ -96546,7 +96546,7 @@ q.push(A.co(32))
 return A.h7(n,A.arx(A.ep(q,B.U,B.a0,B.a7),n,B.aa),n,n)}}
 A.afU.prototype={
 $3(a,b,c){var s=null,r=this.a[b].ga11()
-return A.fB(s,new A.bX(B.Mr,new A.kw(1.7777777777777777,A.aJf(A.ql(8),A.agg("https://img.youtube.com/vi/"+r+"/0.jpg",s,B.eT,s)),s),s),B.R,!1,s,s,s,s,s,s,s,s,s,s,s,s,s,new A.afT(r,a),s,s,s,s,s,s)},
+return A.fB(s,new A.bX(B.Mr,new A.kw(1.7777777777777777,A.aJf(A.ql(8),A.agg("https://img.youtube.com/vi/"+r+"/maxresdefault.jpg",s,B.eT,s)),s),s),B.R,!1,s,s,s,s,s,s,s,s,s,s,s,s,s,new A.afT(r,a),s,s,s,s,s,s)},
 $S:657}
 A.afT.prototype={
 $0(){var s=t.z
