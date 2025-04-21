@@ -23,7 +23,7 @@ const RESOURCES = {"canvaskit/skwasm.js": "f2ad9363618c5f62e813740099a80e63",
 "assets/assets/images/mochi_syuo.webp": "5ae2fcc09d23aeed043bd6eb31c07ba2",
 "assets/assets/images/mochi_syuo_drooling.webp": "ccdd050ab00b43eac689ff2c04581410",
 "assets/assets/images/mochi_syuo_smiling.webp": "6c4ba2fb6a0606fbc18d032b4040dbb4",
-"assets/assets/json/data.json": "d89bac5e1bf5881c8e3347c8aa5cecec",
+"assets/assets/json/data.json": "82c875552363a9608f6d7ffd1865d55a",
 "assets/assets/license/OFL.txt": "f63c7614e3d3c61afd6176cfe0e0ba89",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
 "assets/AssetManifest.bin": "db2514507eff5641f0fa59bde9f0b77f",
@@ -40,7 +40,7 @@ const RESOURCES = {"canvaskit/skwasm.js": "f2ad9363618c5f62e813740099a80e63",
 "icons/Icon-192.png": "a2d5de070957d7b8e0d8c5763c207a92",
 "icons/Icon-512.png": "e9ca66534ed4b36bf3a91179f2add68a",
 "manifest.json": "e949832eaa609781fc1ad73ff0a23c3a",
-"flutter_bootstrap.js": "f4c486056917bfb81a2d4762b20150f3"};
+"flutter_bootstrap.js": "7b64efd5e505d9d5147b2cc15b8419be"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
