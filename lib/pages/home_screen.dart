@@ -42,7 +42,7 @@ class HomeScreen extends HookConsumerWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: Image.network(
-                              'https://img.youtube.com/vi/$videoId/0.jpg',
+                              'https://img.youtube.com/vi/$videoId/maxresdefault.jpg',
                               fit: BoxFit.cover,
                             ),
                           ),
