@@ -44,6 +44,12 @@ class HomeScreen extends HookConsumerWidget {
                             child: Image.network(
                               'https://img.youtube.com/vi/$videoId/maxresdefault.jpg',
                               fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Image.network(
+                                  'https://img.youtube.com/vi/$videoId/0.jpg',
+                                  fit: BoxFit.cover,
+                                );
+                              },
                             ),
                           ),
                         ),
