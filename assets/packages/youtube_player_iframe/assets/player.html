@@ -119,12 +119,6 @@
 
       function sendPlatformMessage(message) {
         switch(platform) {
-           case 'android':
-             <<playerId>>.postMessage(message);
-             break;
-           case 'ios':
-             <<playerId>>.postMessage(message, '*');
-             break;
            case 'web':
              window.parent.postMessage(message, '*');
              break;
