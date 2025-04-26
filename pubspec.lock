@@ -1093,10 +1093,11 @@ packages:
   youtube_player_iframe:
     dependency: "direct main"
     description:
-      name: youtube_player_iframe
-      sha256: "66020f7756accfb22b3297565d845f9bef14249c730dd51e1ec648fa155fb24a"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/youtube_player_iframe"
+      ref: develop
+      resolved-ref: "6b7735d4decdabfb89908b357bbd350f36a457a9"
+      url: "https://github.com/m4rshm4llow/youtube_player_flutter.git"
+    source: git
     version: "5.2.1"
   youtube_player_iframe_web:
     dependency: transitive

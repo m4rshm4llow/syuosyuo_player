@@ -31,7 +31,12 @@ dependencies:
   # For UIs
   gap:
   google_fonts:
+  # videoId にハイフンが含まれると再生ができない不具合をフォークして修正したパッケージを参照
   youtube_player_iframe:
+    git:
+      url: https://github.com/m4rshm4llow/youtube_player_flutter.git
+      ref: develop
+      path: packages/youtube_player_iframe
   pointer_interceptor:
   url_launcher:
   intl:
