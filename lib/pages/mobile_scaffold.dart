@@ -5,12 +5,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:syuosyuo_player/gen/assets.gen.dart';
 import 'package:syuosyuo_player/pages/main_scaffold.dart';
 import 'package:syuosyuo_player/provider/data_provider.dart';
 import 'package:syuosyuo_player/router.dart';
 import 'package:syuosyuo_player/theme/widgets/theme_mode_button.dart';
+import 'package:syuosyuo_player/utils/string.dart';
 import 'package:url_launcher/link.dart';
 
 /// モバイル用のホーム画面
@@ -172,13 +172,5 @@ class _Drawer extends HookConsumerWidget {
         ],
       ),
     );
-  }
-}
-
-extension StringX on String {
-  String formatDate() {
-    final date = DateTime.parse(this);
-    final formatter = DateFormat('yyyy年MM月dd日');
-    return formatter.format(date);
   }
 }

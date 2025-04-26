@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:syuosyuo_player/gen/assets.gen.dart';
 import 'package:syuosyuo_player/provider/data_provider.dart';
@@ -92,26 +91,5 @@ class HomeScreen extends HookConsumerWidget {
         ),
       ),
     );
-  }
-}
-
-extension StringX on String {
-  String formatDate() {
-    final date = DateTime.parse(this);
-    final formatter = DateFormat('yyyy年MM月dd日');
-    return formatter.format(date);
-  }
-
-  double toSeconds() {
-    List<String> parts = split(':');
-    if (parts.length != 3) {
-      throw FormatException('Invalid time format. Expected HH:MM:SS');
-    }
-
-    double hours = double.parse(parts[0]);
-    double minutes = double.parse(parts[1]);
-    double seconds = double.parse(parts[2]);
-
-    return hours * 3600 + minutes * 60 + seconds;
   }
 }
