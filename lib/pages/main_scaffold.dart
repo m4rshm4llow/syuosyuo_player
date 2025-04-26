@@ -7,6 +7,7 @@ import 'package:syuosyuo_player/pages/mobile_scaffold.dart';
 import 'package:syuosyuo_player/provider/data_provider.dart';
 import 'package:syuosyuo_player/router.dart';
 import 'package:syuosyuo_player/theme/widgets/theme_mode_button.dart';
+import 'package:syuosyuo_player/utils/string.dart';
 import 'package:url_launcher/link.dart';
 
 class MainScaffold extends HookConsumerWidget {
@@ -129,6 +130,13 @@ class _Drawer extends HookConsumerWidget {
             title: Text('サムネイルギャラリー'),
             onTap: () {
               ThumbnailPageRoute().go(context);
+            },
+          ),
+          Divider(height: 1.0),
+          ListTile(
+            title: Text('朗読一覧'),
+            onTap: () {
+              ReadingAloudPageRoute().go(context);
             },
           ),
           ListTile(

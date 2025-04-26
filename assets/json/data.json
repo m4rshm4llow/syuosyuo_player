@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-04-22",
+    "lastUpdated": "2025-04-26",
     "debutDate": "2024-12-01",
     "birthday": "10-17",
     "links": [
@@ -22,6 +22,31 @@
         {
             "title": "登龍門BOX",
             "url": "https://www.vmon.jp/box-talents/profile/syuou-syuo"
+        }
+    ],
+    "readingAloudArchives": [
+        {
+            "name": "【#朗読配信 】カオス確定⁉AIとみんなで台本作って元声優#vtuber がよむ！朗読配信🧡【秋桜しゅお/登龍門BOX】#新人vtuber",
+            "date": "2025-04-26",
+            "url": "https://www.youtube.com/watch?v=Hx735tQQPyQ",
+            "timestamps": [
+                {
+                    "description": "高校編 〜放課後の屋上にて〜",
+                    "time": "00:54:46"
+                },
+                {
+                    "description": "大人になってからの後日談 〜小さなカフェのテラス席にて〜",
+                    "time": "01:06:02"
+                },
+                {
+                    "description": "数年後 〜桜が揺れる駅前にて〜",
+                    "time": "01:16:58"
+                },
+                {
+                    "description": "特別な一日編",
+                    "time": "01:30:22"
+                }
+            ]
         }
     ],
     "archives": [

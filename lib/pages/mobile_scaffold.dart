@@ -135,6 +135,14 @@ class _Drawer extends HookConsumerWidget {
               ThumbnailPageRoute().go(context);
             },
           ),
+          Divider(height: 1.0),
+          ListTile(
+            title: Text('朗読一覧'),
+            onTap: () {
+              Navigator.of(context).pop();
+              ReadingAloudPageRoute().go(context);
+            },
+          ),
           ListTile(
             title: Text('ツール'),
             onTap: () {

@@ -124,3 +124,9 @@ List<Song> songList(Ref ref, String videoId) {
   final archives = ref.watch(dataProvider).valueOrNull?.archives ?? [];
   return archives.firstWhere((e) => e.url.contains(videoId)).songs;
 }
+
+@riverpod
+List<Timestamp> readingAloudTimestampList(Ref ref, String videoId) {
+  final archives = ref.watch(dataProvider).valueOrNull?.readingAloudArchives ?? [];
+  return archives.firstWhere((e) => e.url.contains(videoId)).timestamps;
+}

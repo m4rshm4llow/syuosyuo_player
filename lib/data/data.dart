@@ -14,6 +14,7 @@ class Data with _$Data {
     required this.birthday,
     required this.links,
     required this.archives,
+    required this.readingAloudArchives,
   });
 
   final String lastUpdated;
@@ -21,6 +22,7 @@ class Data with _$Data {
   final String birthday;
   final List<Link> links;
   final List<Archive> archives;
+  final List<ReadingAloudArchive> readingAloudArchives;
 
   factory Data.fromJson(Map<String, Object?> json) => _$DataFromJson(json);
 
@@ -72,4 +74,38 @@ class Song with _$Song {
   factory Song.fromJson(Map<String, Object?> json) => _$SongFromJson(json);
 
   Map<String, Object?> toJson() => _$SongToJson(this);
+}
+
+@freezed
+@JsonSerializable()
+class ReadingAloudArchive with _$ReadingAloudArchive {
+  const ReadingAloudArchive({
+    required this.name,
+    required this.date,
+    required this.url,
+    required this.timestamps,
+  });
+
+  final String name;
+  final String date;
+  final String url;
+  final List<Timestamp> timestamps;
+
+  factory ReadingAloudArchive.fromJson(Map<String, Object?> json) =>
+      _$ReadingAloudArchiveFromJson(json);
+
+  Map<String, Object?> toJson() => _$ReadingAloudArchiveToJson(this);
+}
+
+@freezed
+@JsonSerializable()
+class Timestamp with _$Timestamp {
+  const Timestamp({required this.description, required this.time});
+
+  final String description;
+  final String time;
+
+  factory Timestamp.fromJson(Map<String, Object?> json) => _$TimestampFromJson(json);
+
+  Map<String, Object?> toJson() => _$TimestampToJson(this);
 }

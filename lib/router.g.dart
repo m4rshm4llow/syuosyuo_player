@@ -48,6 +48,16 @@ RouteBase get $shellRouteData => StatefulShellRouteData.$route(
           factory: $ThumbnailPageRouteExtension._fromState,
         ),
         GoRouteData.$route(
+          path: '/reading-aloud',
+
+          factory: $ReadingAloudPageRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
+          path: '/watch-reading-aloud',
+
+          factory: $WatchReadingAloudPageRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
           path: '/watch',
 
           factory: $WatchPageRouteExtension._fromState,
@@ -156,6 +166,43 @@ extension $ThumbnailPageRouteExtension on ThumbnailPageRoute {
       const ThumbnailPageRoute();
 
   String get location => GoRouteData.$location('/thumbnails');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ReadingAloudPageRouteExtension on ReadingAloudPageRoute {
+  static ReadingAloudPageRoute _fromState(GoRouterState state) =>
+      const ReadingAloudPageRoute();
+
+  String get location => GoRouteData.$location('/reading-aloud');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $WatchReadingAloudPageRouteExtension on WatchReadingAloudPageRoute {
+  static WatchReadingAloudPageRoute _fromState(GoRouterState state) =>
+      WatchReadingAloudPageRoute(
+        videoId: state.uri.queryParameters['video-id']!,
+      );
+
+  String get location => GoRouteData.$location(
+    '/watch-reading-aloud',
+    queryParams: {'video-id': videoId},
+  );
 
   void go(BuildContext context) => context.go(location);
 

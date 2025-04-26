@@ -8,10 +8,12 @@ import 'package:syuosyuo_player/pages/artists_screen.dart';
 import 'package:syuosyuo_player/pages/credit_screen.dart';
 import 'package:syuosyuo_player/pages/home_screen.dart';
 import 'package:syuosyuo_player/pages/main_scaffold.dart';
+import 'package:syuosyuo_player/pages/reading_aloud_screen.dart';
 import 'package:syuosyuo_player/pages/search_screen.dart';
 import 'package:syuosyuo_player/pages/songs_screen.dart';
 import 'package:syuosyuo_player/pages/thumbnail_screen.dart';
 import 'package:syuosyuo_player/pages/tool_screen.dart';
+import 'package:syuosyuo_player/pages/watch_reading_aloud_screen.dart';
 import 'package:syuosyuo_player/pages/watch_screen.dart';
 
 part 'router.g.dart';
@@ -56,6 +58,8 @@ final router = GoRouter(
         TypedGoRoute<AchivesPageRoute>(path: '/archives'),
         TypedGoRoute<SongPageRoute>(path: '/songs'),
         TypedGoRoute<ThumbnailPageRoute>(path: '/thumbnails'),
+        TypedGoRoute<ReadingAloudPageRoute>(path: '/reading-aloud'),
+        TypedGoRoute<WatchReadingAloudPageRoute>(path: '/watch-reading-aloud'),
         TypedGoRoute<WatchPageRoute>(path: '/watch'),
         TypedGoRoute<CreditPageRoute>(path: '/credit'),
         TypedGoRoute<ToolPageRoute>(path: '/tool'),
@@ -129,6 +133,26 @@ class AchivesPageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return AchivesScreen();
+  }
+}
+
+class ReadingAloudPageRoute extends GoRouteData {
+  const ReadingAloudPageRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return ReadingAloudScreen();
+  }
+}
+
+class WatchReadingAloudPageRoute extends GoRouteData {
+  const WatchReadingAloudPageRoute({required this.videoId});
+
+  final String videoId;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return WatchReadingAloudScreen(videoId: videoId);
   }
 }
 

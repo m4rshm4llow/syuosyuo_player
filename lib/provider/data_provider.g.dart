@@ -446,5 +446,132 @@ class _SongListProviderElement extends AutoDisposeProviderElement<List<Song>>
   String get videoId => (origin as SongListProvider).videoId;
 }
 
+String _$readingAloudTimestampListHash() =>
+    r'3d5a916104ebec9a308a957342d8de04ba69fcb3';
+
+/// See also [readingAloudTimestampList].
+@ProviderFor(readingAloudTimestampList)
+const readingAloudTimestampListProvider = ReadingAloudTimestampListFamily();
+
+/// See also [readingAloudTimestampList].
+class ReadingAloudTimestampListFamily extends Family<List<Timestamp>> {
+  /// See also [readingAloudTimestampList].
+  const ReadingAloudTimestampListFamily();
+
+  /// See also [readingAloudTimestampList].
+  ReadingAloudTimestampListProvider call(String videoId) {
+    return ReadingAloudTimestampListProvider(videoId);
+  }
+
+  @override
+  ReadingAloudTimestampListProvider getProviderOverride(
+    covariant ReadingAloudTimestampListProvider provider,
+  ) {
+    return call(provider.videoId);
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'readingAloudTimestampListProvider';
+}
+
+/// See also [readingAloudTimestampList].
+class ReadingAloudTimestampListProvider
+    extends AutoDisposeProvider<List<Timestamp>> {
+  /// See also [readingAloudTimestampList].
+  ReadingAloudTimestampListProvider(String videoId)
+    : this._internal(
+        (ref) => readingAloudTimestampList(
+          ref as ReadingAloudTimestampListRef,
+          videoId,
+        ),
+        from: readingAloudTimestampListProvider,
+        name: r'readingAloudTimestampListProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$readingAloudTimestampListHash,
+        dependencies: ReadingAloudTimestampListFamily._dependencies,
+        allTransitiveDependencies:
+            ReadingAloudTimestampListFamily._allTransitiveDependencies,
+        videoId: videoId,
+      );
+
+  ReadingAloudTimestampListProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.videoId,
+  }) : super.internal();
+
+  final String videoId;
+
+  @override
+  Override overrideWith(
+    List<Timestamp> Function(ReadingAloudTimestampListRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: ReadingAloudTimestampListProvider._internal(
+        (ref) => create(ref as ReadingAloudTimestampListRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        videoId: videoId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<List<Timestamp>> createElement() {
+    return _ReadingAloudTimestampListProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ReadingAloudTimestampListProvider &&
+        other.videoId == videoId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, videoId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin ReadingAloudTimestampListRef on AutoDisposeProviderRef<List<Timestamp>> {
+  /// The parameter `videoId` of this provider.
+  String get videoId;
+}
+
+class _ReadingAloudTimestampListProviderElement
+    extends AutoDisposeProviderElement<List<Timestamp>>
+    with ReadingAloudTimestampListRef {
+  _ReadingAloudTimestampListProviderElement(super.provider);
+
+  @override
+  String get videoId => (origin as ReadingAloudTimestampListProvider).videoId;
+}
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
