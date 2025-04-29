@@ -74,29 +74,6 @@ Map<Song, int> titleCount(Ref ref, EraLabel eraLabel) {
 }
 
 @Riverpod(keepAlive: true)
-Map<Song, int> songDistributionCount(Ref ref) {
-  // すべてのタイトルを取得する（重複あり）
-  final archives = ref.watch(dataProvider).valueOrNull?.archives ?? [];
-  final titleList = archives.map((e) => e.songs.map((e) => e.title)).expand((e) => e).toList();
-  // 曲の出現回数をカウントする
-  final titleCount = <String, int>{};
-  for (final title in titleList) {
-    titleCount[title] = (titleCount[title] ?? 0) + 1;
-  }
-  final sortedTitleCount = Map.fromEntries(
-    titleCount.entries.toList()..sort((a, b) => b.value.compareTo(a.value)),
-  );
-  // 曲名をキーにして、曲の情報を取得する
-  final songs = archives.expand((e) => e.songs).toList();
-  final songDistributionCount = <Song, int>{};
-  for (final entry in sortedTitleCount.entries) {
-    final song = songs.firstWhere((s) => s.title == entry.key);
-    songDistributionCount[song] = entry.value;
-  }
-  return songDistributionCount;
-}
-
-@Riverpod(keepAlive: true)
 Map<Song, int> artistCount(Ref ref) {
   // アーティストの出現配信数をカウントする
   final archives = ref.watch(dataProvider).valueOrNull?.archives ?? [];
@@ -110,7 +87,7 @@ Map<Song, int> artistCount(Ref ref) {
     artistCount.entries.toList()..sort((a, b) => b.value.compareTo(a.value)),
   );
   // 曲名をキーにして、曲の情報を取得する
-  final songs = ref.watch(dataProvider).valueOrNull?.archives.expand((e) => e.songs).toList() ?? [];
+  final songs = archives.expand((e) => e.songs).toList();
   final songCount = <Song, int>{};
   for (final entry in sortedArtistCount.entries) {
     final song = songs.firstWhere((s) => s.artist == entry.key);

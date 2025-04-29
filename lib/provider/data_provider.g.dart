@@ -296,26 +296,7 @@ class _TitleCountProviderElement extends ProviderElement<Map<Song, int>>
   EraLabel get eraLabel => (origin as TitleCountProvider).eraLabel;
 }
 
-String _$songDistributionCountHash() =>
-    r'6cc003130b9b1dea57b3e2d84f6228962b6b516e';
-
-/// See also [songDistributionCount].
-@ProviderFor(songDistributionCount)
-final songDistributionCountProvider = Provider<Map<Song, int>>.internal(
-  songDistributionCount,
-  name: r'songDistributionCountProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$songDistributionCountHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef SongDistributionCountRef = ProviderRef<Map<Song, int>>;
-String _$artistCountHash() => r'de3fdd962751ce7dbe2adb2d289fd5f7c2866d02';
+String _$artistCountHash() => r'7afc09526054caa3fbf6b0f44669079a81818619';
 
 /// See also [artistCount].
 @ProviderFor(artistCount)
