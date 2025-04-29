@@ -29,50 +29,59 @@ class SingingRelayScreen extends HookConsumerWidget {
             },
             child: Container(
               padding: const EdgeInsets.all(8),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Stack(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: SizedBox(
-                        height: isMobile ? 100 : 144,
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: Image.network(
-                            YoutubePlayerController.getThumbnail(
-                              videoId: videoId,
-                              quality: ThumbnailQuality.high,
-                              webp: false,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: SizedBox(
+                            height: isMobile ? 100 : 144,
+                            child: AspectRatio(
+                              aspectRatio: 16 / 9,
+                              child: Image.network(
+                                YoutubePlayerController.getThumbnail(
+                                  videoId: videoId,
+                                  quality: ThumbnailQuality.high,
+                                  webp: false,
+                                ),
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Gap(4),
-                        Text(
-                          archive.name,
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                          maxLines: 1,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Gap(4),
+                            Text(
+                              archive.name,
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                              maxLines: 1,
+                            ),
+                            Gap(8),
+                            for (final song in archive.songs) ...[
+                              Text(
+                                isMobile ? '・${song.title}' : '・${song.title} / ${song.artist}',
+                                style: TextStyle(fontSize: 12),
+                                maxLines: 1,
+                              ),
+                              Gap(2),
+                            ],
+                          ],
                         ),
-                        Gap(8),
-                        for (final song in archive.songs) ...[
-                          Text(
-                            isMobile ? '・${song.title}' : '・${song.title} / ${song.artist}',
-                            style: TextStyle(fontSize: 12),
-                            maxLines: 1,
-                          ),
-                          Gap(2),
-                        ],
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    bottom: 8,
+                    right: 8,
+                    child: Text(archive.date, style: TextStyle(fontSize: 12)),
                   ),
                 ],
               ),
