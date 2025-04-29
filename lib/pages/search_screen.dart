@@ -76,7 +76,7 @@ class SearchScreen extends HookConsumerWidget {
                   subtitle: Container(
                     padding: const EdgeInsets.only(top: 4),
                     alignment: Alignment.bottomRight,
-                    child: Text(archives[index].date),
+                    child: Text(video.date),
                   ),
                   leading: ClipRRect(
                     borderRadius: BorderRadius.circular(2),
