@@ -129,6 +129,13 @@ class _Drawer extends HookConsumerWidget {
             },
           ),
           ListTile(
+            title: Text('歌枠リレー参加一覧'),
+            onTap: () {
+              Navigator.of(context).pop();
+              SingingRealyPageRoute().go(context);
+            },
+          ),
+          ListTile(
             title: Text('サムネイルギャラリー'),
             onTap: () {
               Navigator.of(context).pop();

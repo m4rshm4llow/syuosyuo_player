@@ -48,6 +48,11 @@ RouteBase get $shellRouteData => StatefulShellRouteData.$route(
           factory: $ThumbnailPageRouteExtension._fromState,
         ),
         GoRouteData.$route(
+          path: '/singing-relay',
+
+          factory: $SingingRealyPageRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
           path: '/reading-aloud',
 
           factory: $ReadingAloudPageRouteExtension._fromState,
@@ -166,6 +171,22 @@ extension $ThumbnailPageRouteExtension on ThumbnailPageRoute {
       const ThumbnailPageRoute();
 
   String get location => GoRouteData.$location('/thumbnails');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $SingingRealyPageRouteExtension on SingingRealyPageRoute {
+  static SingingRealyPageRoute _fromState(GoRouterState state) =>
+      const SingingRealyPageRoute();
+
+  String get location => GoRouteData.$location('/singing-relay');
 
   void go(BuildContext context) => context.go(location);
 
