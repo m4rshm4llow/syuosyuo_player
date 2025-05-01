@@ -427,6 +427,128 @@ class _SongListProviderElement extends AutoDisposeProviderElement<List<Song>>
   String get videoId => (origin as SongListProvider).videoId;
 }
 
+String _$readingAloudHash() => r'd6967a2d417e2db30699a616c457580416a3369a';
+
+/// See also [readingAloud].
+@ProviderFor(readingAloud)
+const readingAloudProvider = ReadingAloudFamily();
+
+/// See also [readingAloud].
+class ReadingAloudFamily extends Family<List<ReadingAloudArchive>> {
+  /// See also [readingAloud].
+  const ReadingAloudFamily();
+
+  /// See also [readingAloud].
+  ReadingAloudProvider call(SortLabel sortLabel) {
+    return ReadingAloudProvider(sortLabel);
+  }
+
+  @override
+  ReadingAloudProvider getProviderOverride(
+    covariant ReadingAloudProvider provider,
+  ) {
+    return call(provider.sortLabel);
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'readingAloudProvider';
+}
+
+/// See also [readingAloud].
+class ReadingAloudProvider
+    extends AutoDisposeProvider<List<ReadingAloudArchive>> {
+  /// See also [readingAloud].
+  ReadingAloudProvider(SortLabel sortLabel)
+    : this._internal(
+        (ref) => readingAloud(ref as ReadingAloudRef, sortLabel),
+        from: readingAloudProvider,
+        name: r'readingAloudProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$readingAloudHash,
+        dependencies: ReadingAloudFamily._dependencies,
+        allTransitiveDependencies:
+            ReadingAloudFamily._allTransitiveDependencies,
+        sortLabel: sortLabel,
+      );
+
+  ReadingAloudProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.sortLabel,
+  }) : super.internal();
+
+  final SortLabel sortLabel;
+
+  @override
+  Override overrideWith(
+    List<ReadingAloudArchive> Function(ReadingAloudRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: ReadingAloudProvider._internal(
+        (ref) => create(ref as ReadingAloudRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        sortLabel: sortLabel,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<List<ReadingAloudArchive>> createElement() {
+    return _ReadingAloudProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ReadingAloudProvider && other.sortLabel == sortLabel;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, sortLabel.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin ReadingAloudRef on AutoDisposeProviderRef<List<ReadingAloudArchive>> {
+  /// The parameter `sortLabel` of this provider.
+  SortLabel get sortLabel;
+}
+
+class _ReadingAloudProviderElement
+    extends AutoDisposeProviderElement<List<ReadingAloudArchive>>
+    with ReadingAloudRef {
+  _ReadingAloudProviderElement(super.provider);
+
+  @override
+  SortLabel get sortLabel => (origin as ReadingAloudProvider).sortLabel;
+}
+
 String _$readingAloudTimestampListHash() =>
     r'3d5a916104ebec9a308a957342d8de04ba69fcb3';
 
