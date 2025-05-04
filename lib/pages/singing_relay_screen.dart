@@ -80,8 +80,8 @@ class SingingRelayScreen extends HookConsumerWidget {
                   ),
                   if (!isMobile)
                     Positioned(
-                      bottom: 8,
-                      right: 8,
+                      bottom: 0,
+                      right: 0,
                       child: Text(archive.date, style: TextStyle(fontSize: 12)),
                     ),
                 ],
