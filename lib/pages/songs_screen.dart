@@ -91,22 +91,20 @@ class SongsScreen extends HookConsumerWidget {
                 itemCount: result.value.length,
                 itemBuilder: (_, index) {
                   final song = result.value.keys.elementAt(index);
-                  return GestureDetector(
+                  return ListTile(
                     onTap: () {
                       SearchPageRoute(q: song.title).go(context);
                     },
-                    child: ListTile(
-                      title: Text(song.title, overflow: TextOverflow.ellipsis),
-                      subtitle: Text(
-                        eraLabel.value == EraLabel.all
-                            ? song.artist
-                            : '${song.artist} (${song.year})',
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      trailing: Text(
-                        '${result.value[song]}枠',
-                        style: TextStyle(fontSize: 14, height: 1),
-                      ),
+                    title: Text(song.title, overflow: TextOverflow.ellipsis),
+                    subtitle: Text(
+                      eraLabel.value == EraLabel.all
+                          ? song.artist
+                          : '${song.artist} (${song.year})',
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    trailing: Text(
+                      '${result.value[song]}枠',
+                      style: TextStyle(fontSize: 14, height: 1),
                     ),
                   );
                 },

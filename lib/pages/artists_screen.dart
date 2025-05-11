@@ -78,16 +78,14 @@ class ArtistsScreen extends HookConsumerWidget {
               child: ListView.separated(
                 itemBuilder: (_, index) {
                   final song = result.value.keys.elementAt(index);
-                  return GestureDetector(
+                  return ListTile(
                     onTap: () {
                       SearchPageRoute(q: song.artist).go(context);
                     },
-                    child: ListTile(
-                      title: Text(song.artist, overflow: TextOverflow.ellipsis),
-                      trailing: Text(
-                        '${result.value[song]}枠',
-                        style: TextStyle(fontSize: 14, height: 1),
-                      ),
+                    title: Text(song.artist, overflow: TextOverflow.ellipsis),
+                    trailing: Text(
+                      '${result.value[song]}枠',
+                      style: TextStyle(fontSize: 14, height: 1),
                     ),
                   );
                 },
