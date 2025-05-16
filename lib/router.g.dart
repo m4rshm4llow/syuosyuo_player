@@ -63,6 +63,11 @@ RouteBase get $shellRouteData => StatefulShellRouteData.$route(
           factory: $WatchReadingAloudPageRouteExtension._fromState,
         ),
         GoRouteData.$route(
+          path: '/favorite',
+
+          factory: $FavoritePageRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
           path: '/watch',
 
           factory: $WatchPageRouteExtension._fromState,
@@ -235,12 +240,39 @@ extension $WatchReadingAloudPageRouteExtension on WatchReadingAloudPageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $WatchPageRouteExtension on WatchPageRoute {
-  static WatchPageRoute _fromState(GoRouterState state) =>
-      WatchPageRoute(videoId: state.uri.queryParameters['video-id']!);
+extension $FavoritePageRouteExtension on FavoritePageRoute {
+  static FavoritePageRoute _fromState(GoRouterState state) =>
+      const FavoritePageRoute();
 
-  String get location =>
-      GoRouteData.$location('/watch', queryParams: {'video-id': videoId});
+  String get location => GoRouteData.$location('/favorite');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $WatchPageRouteExtension on WatchPageRoute {
+  static WatchPageRoute _fromState(GoRouterState state) => WatchPageRoute(
+    videoId: state.uri.queryParameters['video-id']!,
+    start: _$convertMapValue(
+      'start',
+      state.uri.queryParameters,
+      double.tryParse,
+    ),
+  );
+
+  String get location => GoRouteData.$location(
+    '/watch',
+    queryParams: {
+      'video-id': videoId,
+      if (start != null) 'start': start!.toString(),
+    },
+  );
 
   void go(BuildContext context) => context.go(location);
 
@@ -281,4 +313,13 @@ extension $ToolPageRouteExtension on ToolPageRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+T? _$convertMapValue<T>(
+  String key,
+  Map<String, String> map,
+  T? Function(String) converter,
+) {
+  final value = map[key];
+  return value == null ? null : converter(value);
 }

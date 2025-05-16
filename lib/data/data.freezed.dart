@@ -400,4 +400,68 @@ as String,
 }
 
 
+/// @nodoc
+mixin _$FavoriteSong {
+
+ String get title; String get artist; String get videoId; String get time;
+/// Create a copy of FavoriteSong
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FavoriteSongCopyWith<FavoriteSong> get copyWith => _$FavoriteSongCopyWithImpl<FavoriteSong>(this as FavoriteSong, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FavoriteSong&&(identical(other.title, title) || other.title == title)&&(identical(other.artist, artist) || other.artist == artist)&&(identical(other.videoId, videoId) || other.videoId == videoId)&&(identical(other.time, time) || other.time == time));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,title,artist,videoId,time);
+
+@override
+String toString() {
+  return 'FavoriteSong(title: $title, artist: $artist, videoId: $videoId, time: $time)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $FavoriteSongCopyWith<$Res>  {
+  factory $FavoriteSongCopyWith(FavoriteSong value, $Res Function(FavoriteSong) _then) = _$FavoriteSongCopyWithImpl;
+@useResult
+$Res call({
+ String title, String artist, String videoId, String time
+});
+
+
+
+
+}
+/// @nodoc
+class _$FavoriteSongCopyWithImpl<$Res>
+    implements $FavoriteSongCopyWith<$Res> {
+  _$FavoriteSongCopyWithImpl(this._self, this._then);
+
+  final FavoriteSong _self;
+  final $Res Function(FavoriteSong) _then;
+
+/// Create a copy of FavoriteSong
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? artist = null,Object? videoId = null,Object? time = null,}) {
+  return _then(FavoriteSong(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,artist: null == artist ? _self.artist : artist // ignore: cast_nullable_to_non_nullable
+as String,videoId: null == videoId ? _self.videoId : videoId // ignore: cast_nullable_to_non_nullable
+as String,time: null == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
 // dart format on

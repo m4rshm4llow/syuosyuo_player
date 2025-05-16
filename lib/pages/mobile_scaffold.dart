@@ -136,6 +136,13 @@ class _Drawer extends HookConsumerWidget {
             },
           ),
           ListTile(
+            title: Text('お気に入り'),
+            onTap: () {
+              Navigator.of(context).pop();
+              FavoritePageRoute().go(context);
+            },
+          ),
+          ListTile(
             title: Text('サムネイルギャラリー'),
             onTap: () {
               Navigator.of(context).pop();

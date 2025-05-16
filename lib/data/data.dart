@@ -109,3 +109,20 @@ class Timestamp with _$Timestamp {
 
   Map<String, Object?> toJson() => _$TimestampToJson(this);
 }
+
+@freezed
+class FavoriteSong with _$FavoriteSong {
+  const FavoriteSong({
+    required this.title,
+    required this.artist,
+    required this.videoId,
+    required this.time,
+  });
+
+  final String title;
+  final String artist;
+  final String videoId;
+  final String time;
+
+  String get videoKey => '${videoId}_$time';
+}

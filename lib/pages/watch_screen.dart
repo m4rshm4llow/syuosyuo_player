@@ -6,13 +6,16 @@ import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:syuosyuo_player/favorite/widgets/favorite_button.dart';
 import 'package:syuosyuo_player/provider/data_provider.dart';
 import 'package:syuosyuo_player/utils/string.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class WatchScreen extends HookConsumerWidget {
-  const WatchScreen({required this.videoId, super.key});
+  const WatchScreen({required this.videoId, this.start, super.key});
+
   final String videoId;
+  final double? start;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,6 +30,7 @@ class WatchScreen extends HookConsumerWidget {
           captionLanguage: 'ja',
           interfaceLanguage: 'ja',
         ),
+        startSeconds: start,
       );
     }, [videoId]);
 
@@ -82,7 +86,7 @@ class WatchScreen extends HookConsumerWidget {
                 return ListTile(
                   title: Text(song.title),
                   subtitle: Text(song.artist),
-                  trailing: Text(song.time),
+                  trailing: FavoriteButton(videoKey: '${videoId}_${song.time}'),
                   onTap: () {
                     controller.seekTo(seconds: song.time.toSeconds(), allowSeekAhead: true);
                   },

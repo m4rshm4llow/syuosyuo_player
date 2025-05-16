@@ -28,6 +28,12 @@ dependencies:
   # For Navigation
   go_router:
 
+  # For DateTime
+  intl:
+
+  # For LocalDataStorage
+  shared_preferences:
+
   # For UIs
   gap:
   google_fonts:
@@ -39,7 +45,6 @@ dependencies:
       path: packages/youtube_player_iframe
   pointer_interceptor:
   url_launcher:
-  intl:
   responsive_framework:
   carousel_slider:
   flutter_linkify:

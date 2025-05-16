@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:syuosyuo_player/favorite/widgets/favorite_screen.dart';
 import 'package:syuosyuo_player/gen/assets.gen.dart';
 import 'package:syuosyuo_player/pages/achives_screen.dart';
 import 'package:syuosyuo_player/pages/artists_screen.dart';
@@ -62,6 +63,7 @@ final router = GoRouter(
         TypedGoRoute<SingingRealyPageRoute>(path: '/singing-relay'),
         TypedGoRoute<ReadingAloudPageRoute>(path: '/reading-aloud'),
         TypedGoRoute<WatchReadingAloudPageRoute>(path: '/watch-reading-aloud'),
+        TypedGoRoute<FavoritePageRoute>(path: '/favorite'),
         TypedGoRoute<WatchPageRoute>(path: '/watch'),
         TypedGoRoute<CreditPageRoute>(path: '/credit'),
         TypedGoRoute<ToolPageRoute>(path: '/tool'),
@@ -167,14 +169,24 @@ class WatchReadingAloudPageRoute extends GoRouteData {
   }
 }
 
-class WatchPageRoute extends GoRouteData {
-  const WatchPageRoute({required this.videoId});
-
-  final String videoId;
+class FavoritePageRoute extends GoRouteData {
+  const FavoritePageRoute();
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return WatchScreen(videoId: videoId);
+    return FavoriteScreen();
+  }
+}
+
+class WatchPageRoute extends GoRouteData {
+  const WatchPageRoute({required this.videoId, this.start});
+
+  final String videoId;
+  final double? start;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return WatchScreen(videoId: videoId, start: start);
   }
 }
 
