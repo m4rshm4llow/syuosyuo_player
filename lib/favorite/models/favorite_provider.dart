@@ -44,8 +44,9 @@ class Favorite extends _$Favorite {
 List<FavoriteSong> favoriteSongList(Ref ref) {
   final favariteVideoKeys = ref.watch(favoriteProvider).valueOrNull ?? [];
   return favariteVideoKeys.map((videoKey) {
-    final videoId = videoKey.split('_')[0];
-    final time = videoKey.split('_')[1];
+    final lastUnderscoreIndex = videoKey.lastIndexOf('_');
+    final videoId = videoKey.substring(0, lastUnderscoreIndex);
+    final time = videoKey.substring(lastUnderscoreIndex + 1);
     final song = ref.watch(songListProvider(videoId)).firstWhere((e) => e.time == time);
     return FavoriteSong(title: song.title, artist: song.artist, videoId: videoId, time: time);
   }).toList();
