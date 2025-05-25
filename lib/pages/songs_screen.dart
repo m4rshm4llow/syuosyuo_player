@@ -15,9 +15,10 @@ class SongsScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final eraLabel = useState(EraLabel.all);
-    final titleCount = ref.watch(titleCountProvider(eraLabel.value));
+    final filterLabel = useState(SongSortLabel.wNewer);
 
-    final result = useState<Map<Song, int>>(titleCount);
+    final titleCount = ref.watch(combinedTitleCountsProvider(eraLabel.value, filterLabel.value));
+    final result = useState<Map<Song, (int, int)>>(titleCount);
     useEffect(() {
       result.value = titleCount;
       return;
@@ -47,7 +48,7 @@ class SongsScreen extends HookConsumerWidget {
                         }
                         result.value = titleCount.keys
                             .where((song) => song.title.contains(value))
-                            .fold<Map<Song, int>>({}, (map, song) {
+                            .fold<Map<Song, (int, int)>>({}, (map, song) {
                               map[song] = titleCount[song]!;
                               return map;
                             });
@@ -57,12 +58,22 @@ class SongsScreen extends HookConsumerWidget {
                 ),
                 Gap(8),
                 DropdownMenu<EraLabel>(
-                  width: 144,
+                  width: 112,
                   dropdownMenuEntries: EraLabel.entries,
                   initialSelection: EraLabel.all,
                   onSelected: (value) {
                     if (value == null) return;
                     eraLabel.value = value;
+                  },
+                ),
+                Gap(16),
+                DropdownMenu<SongSortLabel>(
+                  width: 120,
+                  dropdownMenuEntries: SongSortLabel.entries,
+                  initialSelection: SongSortLabel.wNewer,
+                  onSelected: (value) {
+                    if (value == null) return;
+                    filterLabel.value = value;
                   },
                 ),
                 Gap(16),
@@ -102,10 +113,12 @@ class SongsScreen extends HookConsumerWidget {
                           : '${song.artist} (${song.year})',
                       overflow: TextOverflow.ellipsis,
                     ),
-                    trailing: Text(
-                      '${result.value[song]}枠',
-                      style: TextStyle(fontSize: 14, height: 1),
-                    ),
+                    trailing: Text(switch (filterLabel.value) {
+                      SongSortLabel.wNewer => '${result.value[song]?.$1}枠',
+                      SongSortLabel.wOlder => '${result.value[song]?.$1}枠',
+                      SongSortLabel.kNewer => '${result.value[song]?.$2}曲',
+                      SongSortLabel.kOlder => '${result.value[song]?.$2}曲',
+                    }, style: TextStyle(fontSize: 14, height: 1)),
                   );
                 },
                 separatorBuilder: (context, index) => Divider(height: 1.0),

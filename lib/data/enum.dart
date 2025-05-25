@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 typedef FilterEntry = DropdownMenuEntry<FilterLabel>;
 typedef EraEntry = DropdownMenuEntry<EraLabel>;
 typedef SortEntry = DropdownMenuEntry<SortLabel>;
+typedef SongSortEntry = DropdownMenuEntry<SongSortLabel>;
 
 enum SortLabel {
   newer('新しい順'),
@@ -49,6 +50,22 @@ enum FilterLabel {
   static final List<FilterEntry> entries = UnmodifiableListView<FilterEntry>(
     values.map<FilterEntry>(
       (FilterLabel filterLabel) => FilterEntry(value: filterLabel, label: filterLabel.label),
+    ),
+  );
+}
+
+enum SongSortLabel {
+  wNewer('枠:降順'),
+  kNewer('曲:降順'),
+  wOlder('枠:昇順'),
+  kOlder('曲:昇順');
+
+  const SongSortLabel(this.label);
+  final String label;
+
+  static final List<SongSortEntry> entries = UnmodifiableListView<SongSortEntry>(
+    values.map<SongSortEntry>(
+      (SongSortLabel filterLabel) => SongSortEntry(value: filterLabel, label: filterLabel.label),
     ),
   );
 }

@@ -177,7 +177,7 @@ class _UtawakuAchivesProviderElement
   FilterLabel get filterLabel => (origin as UtawakuAchivesProvider).filterLabel;
 }
 
-String _$titleCountHash() => r'11860a1728ccfbd443efed5876ed2429616a62a0';
+String _$titleCountHash() => r'781e0713566e008be05936e1748fdaf832b09c01';
 
 /// See also [titleCount].
 @ProviderFor(titleCount)
@@ -294,6 +294,268 @@ class _TitleCountProviderElement extends ProviderElement<Map<Song, int>>
 
   @override
   EraLabel get eraLabel => (origin as TitleCountProvider).eraLabel;
+}
+
+String _$titleSetCountHash() => r'790aa0a2e068421bcd67677b9e33fc24ca0fb4b2';
+
+/// See also [titleSetCount].
+@ProviderFor(titleSetCount)
+const titleSetCountProvider = TitleSetCountFamily();
+
+/// See also [titleSetCount].
+class TitleSetCountFamily extends Family<Map<Song, int>> {
+  /// See also [titleSetCount].
+  const TitleSetCountFamily();
+
+  /// See also [titleSetCount].
+  TitleSetCountProvider call(EraLabel eraLabel) {
+    return TitleSetCountProvider(eraLabel);
+  }
+
+  @override
+  TitleSetCountProvider getProviderOverride(
+    covariant TitleSetCountProvider provider,
+  ) {
+    return call(provider.eraLabel);
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'titleSetCountProvider';
+}
+
+/// See also [titleSetCount].
+class TitleSetCountProvider extends Provider<Map<Song, int>> {
+  /// See also [titleSetCount].
+  TitleSetCountProvider(EraLabel eraLabel)
+    : this._internal(
+        (ref) => titleSetCount(ref as TitleSetCountRef, eraLabel),
+        from: titleSetCountProvider,
+        name: r'titleSetCountProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$titleSetCountHash,
+        dependencies: TitleSetCountFamily._dependencies,
+        allTransitiveDependencies:
+            TitleSetCountFamily._allTransitiveDependencies,
+        eraLabel: eraLabel,
+      );
+
+  TitleSetCountProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.eraLabel,
+  }) : super.internal();
+
+  final EraLabel eraLabel;
+
+  @override
+  Override overrideWith(
+    Map<Song, int> Function(TitleSetCountRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: TitleSetCountProvider._internal(
+        (ref) => create(ref as TitleSetCountRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        eraLabel: eraLabel,
+      ),
+    );
+  }
+
+  @override
+  ProviderElement<Map<Song, int>> createElement() {
+    return _TitleSetCountProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is TitleSetCountProvider && other.eraLabel == eraLabel;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, eraLabel.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin TitleSetCountRef on ProviderRef<Map<Song, int>> {
+  /// The parameter `eraLabel` of this provider.
+  EraLabel get eraLabel;
+}
+
+class _TitleSetCountProviderElement extends ProviderElement<Map<Song, int>>
+    with TitleSetCountRef {
+  _TitleSetCountProviderElement(super.provider);
+
+  @override
+  EraLabel get eraLabel => (origin as TitleSetCountProvider).eraLabel;
+}
+
+String _$combinedTitleCountsHash() =>
+    r'b1a6391316719925f71c2added3c28a54f7551c0';
+
+/// See also [combinedTitleCounts].
+@ProviderFor(combinedTitleCounts)
+const combinedTitleCountsProvider = CombinedTitleCountsFamily();
+
+/// See also [combinedTitleCounts].
+class CombinedTitleCountsFamily extends Family<Map<Song, (int, int)>> {
+  /// See also [combinedTitleCounts].
+  const CombinedTitleCountsFamily();
+
+  /// See also [combinedTitleCounts].
+  CombinedTitleCountsProvider call(
+    EraLabel eraLabel,
+    SongSortLabel filterLabel,
+  ) {
+    return CombinedTitleCountsProvider(eraLabel, filterLabel);
+  }
+
+  @override
+  CombinedTitleCountsProvider getProviderOverride(
+    covariant CombinedTitleCountsProvider provider,
+  ) {
+    return call(provider.eraLabel, provider.filterLabel);
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'combinedTitleCountsProvider';
+}
+
+/// See also [combinedTitleCounts].
+class CombinedTitleCountsProvider extends Provider<Map<Song, (int, int)>> {
+  /// See also [combinedTitleCounts].
+  CombinedTitleCountsProvider(EraLabel eraLabel, SongSortLabel filterLabel)
+    : this._internal(
+        (ref) => combinedTitleCounts(
+          ref as CombinedTitleCountsRef,
+          eraLabel,
+          filterLabel,
+        ),
+        from: combinedTitleCountsProvider,
+        name: r'combinedTitleCountsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$combinedTitleCountsHash,
+        dependencies: CombinedTitleCountsFamily._dependencies,
+        allTransitiveDependencies:
+            CombinedTitleCountsFamily._allTransitiveDependencies,
+        eraLabel: eraLabel,
+        filterLabel: filterLabel,
+      );
+
+  CombinedTitleCountsProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.eraLabel,
+    required this.filterLabel,
+  }) : super.internal();
+
+  final EraLabel eraLabel;
+  final SongSortLabel filterLabel;
+
+  @override
+  Override overrideWith(
+    Map<Song, (int, int)> Function(CombinedTitleCountsRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: CombinedTitleCountsProvider._internal(
+        (ref) => create(ref as CombinedTitleCountsRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        eraLabel: eraLabel,
+        filterLabel: filterLabel,
+      ),
+    );
+  }
+
+  @override
+  ProviderElement<Map<Song, (int, int)>> createElement() {
+    return _CombinedTitleCountsProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is CombinedTitleCountsProvider &&
+        other.eraLabel == eraLabel &&
+        other.filterLabel == filterLabel;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, eraLabel.hashCode);
+    hash = _SystemHash.combine(hash, filterLabel.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin CombinedTitleCountsRef on ProviderRef<Map<Song, (int, int)>> {
+  /// The parameter `eraLabel` of this provider.
+  EraLabel get eraLabel;
+
+  /// The parameter `filterLabel` of this provider.
+  SongSortLabel get filterLabel;
+}
+
+class _CombinedTitleCountsProviderElement
+    extends ProviderElement<Map<Song, (int, int)>>
+    with CombinedTitleCountsRef {
+  _CombinedTitleCountsProviderElement(super.provider);
+
+  @override
+  EraLabel get eraLabel => (origin as CombinedTitleCountsProvider).eraLabel;
+  @override
+  SongSortLabel get filterLabel =>
+      (origin as CombinedTitleCountsProvider).filterLabel;
 }
 
 String _$artistCountHash() => r'7afc09526054caa3fbf6b0f44669079a81818619';

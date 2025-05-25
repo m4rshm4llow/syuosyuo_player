@@ -41,17 +41,15 @@ FutureOr<List<Archive>> utawakuAchives(
 
 @Riverpod(keepAlive: true)
 Map<Song, int> titleCount(Ref ref, EraLabel eraLabel) {
-  // すべてのタイトルを取得する（toSetで重複除外）
+  // すべてのタイトルを取得する
   final archives = ref.watch(dataProvider).valueOrNull?.archives ?? [];
   final titleList =
       archives
           .map(
-            (e) =>
-                e.songs
-                    // 元号でフィルタリング
-                    .where((e) => e.year >= eraLabel.start && e.year < eraLabel.end)
-                    .map((e) => e.title)
-                    .toSet(),
+            (e) => e.songs
+                // 元号でフィルタリング
+                .where((e) => e.year >= eraLabel.start && e.year < eraLabel.end)
+                .map((e) => e.title),
           )
           .toList();
   final titles = titleList.expand((e) => e).toList();
@@ -71,6 +69,69 @@ Map<Song, int> titleCount(Ref ref, EraLabel eraLabel) {
     songCount[song] = entry.value;
   }
   return songCount;
+}
+
+@Riverpod(keepAlive: true)
+Map<Song, int> titleSetCount(Ref ref, EraLabel eraLabel) {
+  // すべてのタイトルを取得する（toSetで重複除外）
+  final archives = ref.watch(dataProvider).valueOrNull?.archives ?? [];
+  final titleList =
+      archives
+          .map(
+            (e) =>
+                e.songs
+                    // 元号でフィルタリング
+                    .where((e) => e.year >= eraLabel.start && e.year < eraLabel.end)
+                    .map((e) => e.title)
+                    .toSet(),
+          )
+          .toList();
+  final titles = titleList.expand((e) => e).toList();
+  // タイトルの出現回数をカウントする
+  final titleCount = <String, int>{};
+  for (final title in titles) {
+    titleCount[title] = (titleCount[title] ?? 0) + 1;
+  }
+  // 曲名をキーにして、曲の情報を取得する
+  final songs = archives.expand((e) => e.songs).toList();
+  final songCount = <Song, int>{};
+  for (final entry in titleCount.entries) {
+    final song = songs.firstWhere((s) => s.title == entry.key);
+    songCount[song] = entry.value;
+  }
+  return songCount;
+}
+
+@Riverpod(keepAlive: true)
+Map<Song, (int, int)> combinedTitleCounts(Ref ref, EraLabel eraLabel, SongSortLabel filterLabel) {
+  final titleCountMap = ref.watch(titleCountProvider(eraLabel));
+  final titleSetCountMap = ref.watch(titleSetCountProvider(eraLabel));
+
+  final combinedCount = <Song, (int, int)>{};
+  for (final song in titleSetCountMap.keys) {
+    final c1 = titleSetCountMap[song] ?? 0;
+    final c2 = titleCountMap[song] ?? 0;
+    combinedCount[song] = (c1, c2);
+  }
+
+  switch (filterLabel) {
+    case SongSortLabel.wNewer:
+      return Map.fromEntries(
+        combinedCount.entries.toList()..sort((a, b) => b.value.$1.compareTo(a.value.$1)),
+      );
+    case SongSortLabel.kNewer:
+      return Map.fromEntries(
+        combinedCount.entries.toList()..sort((a, b) => b.value.$2.compareTo(a.value.$2)),
+      );
+    case SongSortLabel.wOlder:
+      return Map.fromEntries(
+        combinedCount.entries.toList()..sort((a, b) => a.value.$1.compareTo(b.value.$1)),
+      );
+    case SongSortLabel.kOlder:
+      return Map.fromEntries(
+        combinedCount.entries.toList()..sort((a, b) => a.value.$2.compareTo(b.value.$2)),
+      );
+  }
 }
 
 @Riverpod(keepAlive: true)
