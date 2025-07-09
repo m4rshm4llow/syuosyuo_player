@@ -28,7 +28,7 @@ const RESOURCES = {"canvaskit/skwasm.wasm": "f0dfd99007f989368db17c9abeed5a49",
 "assets/NOTICES": "b8159ecd52b6adf6617e9b7b5a2b5c43",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
 "assets/assets/license/OFL.txt": "f63c7614e3d3c61afd6176cfe0e0ba89",
-"assets/assets/json/data.json": "7d29fe3253806165a50ae724ffef491f",
+"assets/assets/json/data.json": "46c42d5290f622861d2227ba1dc5316e",
 "assets/assets/images/mochi_syuo_angry.webp": "2ced4698c3b020608b5c8f6afef8d3bf",
 "assets/assets/images/mochi_syuo_smiling.webp": "6c4ba2fb6a0606fbc18d032b4040dbb4",
 "assets/assets/images/mochi_syuo.webp": "5ae2fcc09d23aeed043bd6eb31c07ba2",
@@ -39,7 +39,7 @@ const RESOURCES = {"canvaskit/skwasm.wasm": "f0dfd99007f989368db17c9abeed5a49",
 "assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
 "icons/Icon-512.png": "e9ca66534ed4b36bf3a91179f2add68a",
 "icons/Icon-192.png": "a2d5de070957d7b8e0d8c5763c207a92",
-"flutter_bootstrap.js": "010b89f725d5c95a3d79168364f91d48",
+"flutter_bootstrap.js": "a6e591e2a0cc3723412b49a7fce5255e",
 "version.json": "ffd2aa48cd8adea78e3a0f97153ffae5"};
 // The application shell files that are downloaded before a service worker can
 // start.
