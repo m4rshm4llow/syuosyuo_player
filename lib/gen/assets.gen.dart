@@ -45,8 +45,11 @@ class $AssetsJsonGen {
   /// File path: assets/json/data.json
   String get data => 'assets/json/data.json';
 
+  /// File path: assets/json/rodoku.json
+  String get rodoku => 'assets/json/rodoku.json';
+
   /// List of all assets
-  List<String> get values => [data];
+  List<String> get values => [data, rodoku];
 }
 
 class $AssetsLicenseGen {
