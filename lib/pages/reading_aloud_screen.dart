@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:syuosyuo_player/data/enum.dart';
-import 'package:syuosyuo_player/provider/data_provider.dart';
+import 'package:syuosyuo_player/provider/rodoku_data_provider.dart';
 import 'package:syuosyuo_player/router.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
@@ -13,7 +13,7 @@ class ReadingAloudScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sortLabel = useState(SortLabel.newer);
-    final archives = ref.watch(readingAloudProvider(sortLabel.value));
+    final archives = ref.watch(rodokuDataAchivesProvider(sortLabel.value)).valueOrNull ?? [];
 
     return Scaffold(
       body: Column(
@@ -31,7 +31,7 @@ class ReadingAloudScreen extends HookConsumerWidget {
                   onSelected: (value) {
                     if (value == null) return;
                     sortLabel.value = value;
-                    ref.invalidate(readingAloudProvider);
+                    ref.invalidate(rodokuDataAchivesProvider);
                   },
                 ),
                 Spacer(),
