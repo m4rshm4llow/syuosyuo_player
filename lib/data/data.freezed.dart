@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Data {
 
- String get lastUpdated; String get debutDate; String get birthday; List<Link> get links; List<Archive> get archives; List<ReadingAloudArchive> get readingAloudArchives;
+ String get lastUpdated; String get debutDate; String get birthday; List<Link> get links; List<Archive> get archives;
 /// Create a copy of Data
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,16 +27,16 @@ $DataCopyWith<Data> get copyWith => _$DataCopyWithImpl<Data>(this as Data, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Data&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.debutDate, debutDate) || other.debutDate == debutDate)&&(identical(other.birthday, birthday) || other.birthday == birthday)&&const DeepCollectionEquality().equals(other.links, links)&&const DeepCollectionEquality().equals(other.archives, archives)&&const DeepCollectionEquality().equals(other.readingAloudArchives, readingAloudArchives));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Data&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.debutDate, debutDate) || other.debutDate == debutDate)&&(identical(other.birthday, birthday) || other.birthday == birthday)&&const DeepCollectionEquality().equals(other.links, links)&&const DeepCollectionEquality().equals(other.archives, archives));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,lastUpdated,debutDate,birthday,const DeepCollectionEquality().hash(links),const DeepCollectionEquality().hash(archives),const DeepCollectionEquality().hash(readingAloudArchives));
+int get hashCode => Object.hash(runtimeType,lastUpdated,debutDate,birthday,const DeepCollectionEquality().hash(links),const DeepCollectionEquality().hash(archives));
 
 @override
 String toString() {
-  return 'Data(lastUpdated: $lastUpdated, debutDate: $debutDate, birthday: $birthday, links: $links, archives: $archives, readingAloudArchives: $readingAloudArchives)';
+  return 'Data(lastUpdated: $lastUpdated, debutDate: $debutDate, birthday: $birthday, links: $links, archives: $archives)';
 }
 
 
@@ -47,7 +47,7 @@ abstract mixin class $DataCopyWith<$Res>  {
   factory $DataCopyWith(Data value, $Res Function(Data) _then) = _$DataCopyWithImpl;
 @useResult
 $Res call({
- String lastUpdated, String debutDate, String birthday, List<Link> links, List<Archive> archives, List<ReadingAloudArchive> readingAloudArchives
+ String lastUpdated, String debutDate, String birthday, List<Link> links, List<Archive> archives
 });
 
 
@@ -64,15 +64,14 @@ class _$DataCopyWithImpl<$Res>
 
 /// Create a copy of Data
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? lastUpdated = null,Object? debutDate = null,Object? birthday = null,Object? links = null,Object? archives = null,Object? readingAloudArchives = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? lastUpdated = null,Object? debutDate = null,Object? birthday = null,Object? links = null,Object? archives = null,}) {
   return _then(Data(
 lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
 as String,debutDate: null == debutDate ? _self.debutDate : debutDate // ignore: cast_nullable_to_non_nullable
 as String,birthday: null == birthday ? _self.birthday : birthday // ignore: cast_nullable_to_non_nullable
 as String,links: null == links ? _self.links : links // ignore: cast_nullable_to_non_nullable
 as List<Link>,archives: null == archives ? _self.archives : archives // ignore: cast_nullable_to_non_nullable
-as List<Archive>,readingAloudArchives: null == readingAloudArchives ? _self.readingAloudArchives : readingAloudArchives // ignore: cast_nullable_to_non_nullable
-as List<ReadingAloudArchive>,
+as List<Archive>,
   ));
 }
 
@@ -266,71 +265,6 @@ as String,artist: null == artist ? _self.artist : artist // ignore: cast_nullabl
 as String,year: null == year ? _self.year : year // ignore: cast_nullable_to_non_nullable
 as int,time: null == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
 as String,
-  ));
-}
-
-}
-
-
-
-/// @nodoc
-mixin _$ReadingAloudArchive {
-
- String get name; String get date; String get url; List<Timestamp> get timestamps;
-/// Create a copy of ReadingAloudArchive
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ReadingAloudArchiveCopyWith<ReadingAloudArchive> get copyWith => _$ReadingAloudArchiveCopyWithImpl<ReadingAloudArchive>(this as ReadingAloudArchive, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReadingAloudArchive&&(identical(other.name, name) || other.name == name)&&(identical(other.date, date) || other.date == date)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.timestamps, timestamps));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,name,date,url,const DeepCollectionEquality().hash(timestamps));
-
-@override
-String toString() {
-  return 'ReadingAloudArchive(name: $name, date: $date, url: $url, timestamps: $timestamps)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $ReadingAloudArchiveCopyWith<$Res>  {
-  factory $ReadingAloudArchiveCopyWith(ReadingAloudArchive value, $Res Function(ReadingAloudArchive) _then) = _$ReadingAloudArchiveCopyWithImpl;
-@useResult
-$Res call({
- String name, String date, String url, List<Timestamp> timestamps
-});
-
-
-
-
-}
-/// @nodoc
-class _$ReadingAloudArchiveCopyWithImpl<$Res>
-    implements $ReadingAloudArchiveCopyWith<$Res> {
-  _$ReadingAloudArchiveCopyWithImpl(this._self, this._then);
-
-  final ReadingAloudArchive _self;
-  final $Res Function(ReadingAloudArchive) _then;
-
-/// Create a copy of ReadingAloudArchive
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? date = null,Object? url = null,Object? timestamps = null,}) {
-  return _then(ReadingAloudArchive(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as String,timestamps: null == timestamps ? _self.timestamps : timestamps // ignore: cast_nullable_to_non_nullable
-as List<Timestamp>,
   ));
 }
 

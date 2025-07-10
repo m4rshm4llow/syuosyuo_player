@@ -162,22 +162,3 @@ List<Song> songList(Ref ref, String videoId) {
   final archives = ref.watch(dataProvider).valueOrNull?.archives ?? [];
   return archives.firstWhere((e) => e.url.contains(videoId)).songs;
 }
-
-@riverpod
-List<ReadingAloudArchive> readingAloud(Ref ref, SortLabel sortLabel) {
-  final archives = ref.watch(dataProvider).valueOrNull?.readingAloudArchives ?? [];
-  // ソート
-  switch (sortLabel) {
-    case SortLabel.newer:
-      archives.sort((a, b) => b.date.compareTo(a.date));
-    case SortLabel.older:
-      archives.sort((a, b) => a.date.compareTo(b.date));
-  }
-  return archives;
-}
-
-@riverpod
-List<Timestamp> readingAloudTimestampList(Ref ref, String videoId) {
-  final archives = ref.watch(dataProvider).valueOrNull?.readingAloudArchives ?? [];
-  return archives.firstWhere((e) => e.url.contains(videoId)).timestamps;
-}
