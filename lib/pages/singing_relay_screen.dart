@@ -22,7 +22,7 @@ class SingingRelayScreen extends HookConsumerWidget {
         itemCount: archives.length,
         itemBuilder: (context, index) {
           final archive = archives[index];
-          final videoId = YoutubePlayerController.convertUrlToId(archives[index].url)!;
+          final videoId = archive.videoId;
           return InkWell(
             onTap: () {
               WatchPageRoute(videoId: videoId).push(context);

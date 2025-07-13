@@ -57,7 +57,7 @@ class AchivesScreen extends HookConsumerWidget {
             child: ListView.separated(
               itemCount: archives.length,
               itemBuilder: (context, index) {
-                final videoId = archives[index].url.split('v=')[1].split('&')[0];
+                final videoId = archives[index].videoId;
                 return ListTile(
                   title: Text(
                     archives[index].name,

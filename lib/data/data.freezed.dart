@@ -145,7 +145,7 @@ as String,
 /// @nodoc
 mixin _$Archive {
 
- String get name; String get date; String get url; List<Song> get songs;
+ String get name; String get date; String get videoId; List<Song> get songs;
 /// Create a copy of Archive
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -156,16 +156,16 @@ $ArchiveCopyWith<Archive> get copyWith => _$ArchiveCopyWithImpl<Archive>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Archive&&(identical(other.name, name) || other.name == name)&&(identical(other.date, date) || other.date == date)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.songs, songs));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Archive&&(identical(other.name, name) || other.name == name)&&(identical(other.date, date) || other.date == date)&&(identical(other.videoId, videoId) || other.videoId == videoId)&&const DeepCollectionEquality().equals(other.songs, songs));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,date,url,const DeepCollectionEquality().hash(songs));
+int get hashCode => Object.hash(runtimeType,name,date,videoId,const DeepCollectionEquality().hash(songs));
 
 @override
 String toString() {
-  return 'Archive(name: $name, date: $date, url: $url, songs: $songs)';
+  return 'Archive(name: $name, date: $date, videoId: $videoId, songs: $songs)';
 }
 
 
@@ -176,7 +176,7 @@ abstract mixin class $ArchiveCopyWith<$Res>  {
   factory $ArchiveCopyWith(Archive value, $Res Function(Archive) _then) = _$ArchiveCopyWithImpl;
 @useResult
 $Res call({
- String name, String date, String url, List<Song> songs
+ String name, String date, String videoId, List<Song> songs
 });
 
 
@@ -193,11 +193,11 @@ class _$ArchiveCopyWithImpl<$Res>
 
 /// Create a copy of Archive
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? date = null,Object? url = null,Object? songs = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? date = null,Object? videoId = null,Object? songs = null,}) {
   return _then(Archive(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,videoId: null == videoId ? _self.videoId : videoId // ignore: cast_nullable_to_non_nullable
 as String,songs: null == songs ? _self.songs : songs // ignore: cast_nullable_to_non_nullable
 as List<Song>,
   ));

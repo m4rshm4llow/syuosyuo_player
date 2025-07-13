@@ -39,7 +39,7 @@ Map<String, dynamic> _$LinkToJson(Link instance) => <String, dynamic>{
 Archive _$ArchiveFromJson(Map<String, dynamic> json) => Archive(
   name: json['name'] as String,
   date: json['date'] as String,
-  url: json['url'] as String,
+  videoId: json['v'] as String,
   songs:
       (json['songs'] as List<dynamic>)
           .map((e) => Song.fromJson(e as Map<String, dynamic>))
@@ -49,7 +49,7 @@ Archive _$ArchiveFromJson(Map<String, dynamic> json) => Archive(
 Map<String, dynamic> _$ArchiveToJson(Archive instance) => <String, dynamic>{
   'name': instance.name,
   'date': instance.date,
-  'url': instance.url,
+  'v': instance.videoId,
   'songs': instance.songs,
 };
 

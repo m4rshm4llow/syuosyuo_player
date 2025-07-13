@@ -160,5 +160,5 @@ Map<Song, int> artistCount(Ref ref) {
 @riverpod
 List<Song> songList(Ref ref, String videoId) {
   final archives = ref.watch(dataProvider).valueOrNull?.archives ?? [];
-  return archives.firstWhere((e) => e.url.contains(videoId)).songs;
+  return archives.firstWhere((e) => e.videoId.contains(videoId)).songs;
 }

@@ -43,16 +43,18 @@ class Link with _$Link {
 @freezed
 @JsonSerializable()
 class Archive with _$Archive {
-  const Archive({required this.name, required this.date, required this.url, required this.songs});
+  const Archive({
+    required this.name,
+    required this.date,
+    required this.videoId,
+    required this.songs,
+  });
 
   final String name;
   final String date;
-  final String url;
+  @JsonKey(name: 'v')
+  final String videoId;
   final List<Song> songs;
-
-  /// YouTube の URLから videoId を取得する
-  /// 例: https://www.youtube.com/watch?v=VIDEO_ID
-  String get videoId => url.split('v=')[1].split('&')[0];
 
   factory Archive.fromJson(Map<String, Object?> json) => _$ArchiveFromJson(json);
 

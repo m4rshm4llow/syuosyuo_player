@@ -65,7 +65,7 @@ class SearchScreen extends HookConsumerWidget {
               itemCount: result.value.length,
               itemBuilder: (context, index) {
                 final video = result.value[index];
-                final videoId = video.url.split('v=')[1].split('&')[0];
+                final videoId = video.videoId;
                 return ListTile(
                   minTileHeight: 66,
                   title: Text(

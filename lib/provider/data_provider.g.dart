@@ -574,7 +574,7 @@ final artistCountProvider = Provider<Map<Song, int>>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef ArtistCountRef = ProviderRef<Map<Song, int>>;
-String _$songListHash() => r'f42c3e30296e0d5b08ffefa4b2d2c333898c022d';
+String _$songListHash() => r'2b11929e5c02d95cf865471652903533557ae748';
 
 /// See also [songList].
 @ProviderFor(songList)

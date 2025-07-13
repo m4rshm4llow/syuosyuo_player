@@ -29,7 +29,7 @@ class ToolScreen extends HookConsumerWidget {
     final songList = archives.map((e) => e.songs).expand((e) => e).toList();
 
     // データ不備: URL重複チェック
-    final uniqueUrls = archives.map((e) => e.url).toSet();
+    final uniqueUrls = archives.map((e) => e.videoId).toSet();
     final hasDuplicateUrls = uniqueUrls.length != archives.length;
 
     return Scaffold(
