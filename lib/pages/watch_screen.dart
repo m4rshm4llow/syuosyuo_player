@@ -8,6 +8,7 @@ import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:syuosyuo_player/favorite/widgets/favorite_button.dart';
 import 'package:syuosyuo_player/provider/data_provider.dart';
+import 'package:syuosyuo_player/share/widgets/share_button.dart';
 import 'package:syuosyuo_player/utils/string.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
@@ -87,7 +88,13 @@ class WatchScreen extends HookConsumerWidget {
                 return ListTile(
                   title: Text(song.title),
                   subtitle: Text(song.artist),
-                  trailing: FavoriteButton(videoKey: '${videoId}_${song.time}'),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ShareButton(song: song, videoId: videoId),
+                      FavoriteButton(videoKey: '${videoId}_${song.time}'),
+                    ],
+                  ),
                   onTap: () {
                     controller.seekTo(seconds: song.time.toSeconds(), allowSeekAhead: true);
                   },
