@@ -68,6 +68,7 @@ class WatchScreen extends HookConsumerWidget {
                       onHover: (event) {
                         showOverlay.value = false;
                         Timer(const Duration(seconds: 1), () {
+                          if (!context.mounted) return;
                           showOverlay.value = true;
                         });
                       },
