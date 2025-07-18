@@ -16,9 +16,9 @@ class ShareButton extends ConsumerWidget {
         try {
           final title = '♪ ${song.title} / ${song.artist}';
           final ytUrl = 'https://youtu.be/$videoId?t=${song.time.toSeconds()}';
-          final hashTag = '秋桜しゅお';
+          final hashTag = '#秋桜しゅお #vtuber #vsinger';
           final appName = 'しゅおしゅおプレイヤー';
-          final shareText = '$title\n\n$ytUrl\n\n#$hashTag\n#$appName';
+          final shareText = '$title\n\n$ytUrl\n\n$hashTag\n#$appName';
           final encodedText = Uri.encodeComponent(shareText);
           final uri = Uri.parse('https://twitter.com/intent/tweet?text=$encodedText');
           if (await canLaunchUrl(uri)) {
