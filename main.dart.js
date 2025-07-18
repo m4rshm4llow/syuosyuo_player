@@ -98590,9 +98590,9 @@ g=o.a
 f=g.e
 n="\u266a "+f.a+" / "+f.b
 m="https://youtu.be/"+g.f+"?t="+A.m(A.aur(f.d))
-l="\u79cb\u685c\u3057\u3085\u304a"
+l="#\u79cb\u685c\u3057\u3085\u304a #vtuber #vsinger"
 k="\u3057\u3085\u304a\u3057\u3085\u304a\u30d7\u30ec\u30a4\u30e4\u30fc"
-j=A.m(n)+"\n\n"+A.m(m)+"\n\n#"+A.m(l)+"\n#"+A.m(k)
+j=A.m(n)+"\n\n"+A.m(m)+"\n\n"+A.m(l)+"\n#"+A.m(k)
 i=A.nJ(2,j,B.a1,!1)
 h=A.cn("https://twitter.com/intent/tweet?text="+A.m(i),0,null)
 s=9
