@@ -51,6 +51,7 @@ dependencies:
   flutter_linkify:
   image_painter:
   image_downloader_web:
+  flutter_colorpicker:
 
 dev_dependencies:
   flutter_test:
