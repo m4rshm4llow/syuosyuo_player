@@ -437,6 +437,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  image_painter:
+    dependency: "direct main"
+    description:
+      name: image_painter
+      sha256: "0db91550562821d38e54b5960dbb3a7438d7ae3b48733dcee5fffb964b9bf95c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.1"
   image_size_getter:
     dependency: transitive
     description:

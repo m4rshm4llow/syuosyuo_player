@@ -23,7 +23,9 @@ jobs:
         run: flutter pub get
 
       - name: Build web
-        run: flutter build web --release --base-href="/syuosyuo_player/"
+        run: |
+          flutter config --enable-web
+          flutter build web --release --base-href="/syuosyuo_player/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

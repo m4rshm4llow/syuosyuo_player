@@ -82,6 +82,11 @@ RouteBase get $shellRouteData => StatefulShellRouteData.$route(
 
           factory: $ToolPageRouteExtension._fromState,
         ),
+        GoRouteData.$route(
+          path: '/paint',
+
+          factory: $PaintPageRouteExtension._fromState,
+        ),
       ],
     ),
   ],
@@ -304,6 +309,22 @@ extension $ToolPageRouteExtension on ToolPageRoute {
   static ToolPageRoute _fromState(GoRouterState state) => const ToolPageRoute();
 
   String get location => GoRouteData.$location('/tool');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $PaintPageRouteExtension on PaintPageRoute {
+  static PaintPageRoute _fromState(GoRouterState state) =>
+      const PaintPageRoute();
+
+  String get location => GoRouteData.$location('/paint');
 
   void go(BuildContext context) => context.go(location);
 

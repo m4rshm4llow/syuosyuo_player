@@ -48,6 +48,7 @@ dependencies:
   responsive_framework:
   carousel_slider:
   flutter_linkify:
+  image_painter:
 
 dev_dependencies:
   flutter_test:

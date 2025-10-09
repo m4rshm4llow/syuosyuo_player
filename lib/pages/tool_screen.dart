@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:syuosyuo_player/provider/data_provider.dart';
+import 'package:syuosyuo_player/router.dart';
 
 /// ツール系の画面
 class ToolScreen extends HookConsumerWidget {
@@ -86,6 +87,13 @@ class ToolScreen extends HookConsumerWidget {
             ListTile(
               title: const Text('動画URL重複チェック'),
               subtitle: hasDuplicateUrls ? Text('重複があります') : Text('重複はありません'),
+            ),
+            Divider(height: 1.0),
+            ListTile(
+              title: const Text('アちゃん塗り絵ツール🎨🖌️✨'),
+              onTap: () {
+                PaintPageRoute().go(context);
+              },
             ),
             Divider(height: 1.0),
           ],
