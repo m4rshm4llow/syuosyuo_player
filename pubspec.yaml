@@ -50,6 +50,7 @@ dependencies:
   carousel_slider:
   flutter_linkify:
   image_painter:
+  image_downloader_web:
 
 dev_dependencies:
   flutter_test:

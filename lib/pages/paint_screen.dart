@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_downloader_web/image_downloader_web.dart';
 import 'package:image_painter/image_painter.dart';
+import 'package:intl/intl.dart';
 
 /// アちゃんペイントツールの画面
 class PaintScreen extends HookConsumerWidget {
@@ -12,7 +14,23 @@ class PaintScreen extends HookConsumerWidget {
     final controller = useMemoized(() => ImagePainterController());
 
     return Scaffold(
-      appBar: AppBar(title: const Text('アちゃん塗り絵ツール')),
+      appBar: AppBar(
+        title: const Text('アちゃん塗り絵ツール'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.save_alt),
+            onPressed: () async {
+              final image = await controller.exportImage();
+              if (image == null) return;
+              final now = DateTime.now();
+              final formatter = DateFormat('yyyyMMddHHmm');
+              final fileName = 'achan_${formatter.format(now)}.png';
+              WebImageDownloader.downloadImageFromUInt8List(name: fileName, uInt8List: image);
+            },
+          ),
+        ],
+      ),
+
       body: ImagePainter.network(
         'https://pbs.twimg.com/media/G1JntFhawAA81GZ?format=jpg&name=4096x4096',
         controller: controller,
