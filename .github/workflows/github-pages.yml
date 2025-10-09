@@ -17,18 +17,16 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: "3.29.2"
+          flutter-version: "3.35.5"
 
       - name: Install dependencies
         run: flutter pub get
 
       - name: Build web
-        run: |
-          flutter config --enable-web
-          flutter build web --release --base-href="/syuosyuo_player/"
+        run: flutter build web --release --base-href="/syuosyuo_player/" --tree-shake-icons --dart-define=FLUTTER_WEB_USE_SKIA=false --source-maps
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
