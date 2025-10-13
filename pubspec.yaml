@@ -49,9 +49,8 @@ dependencies:
   responsive_framework:
   carousel_slider:
   flutter_linkify:
-  image_painter:
   image_downloader_web:
-  flutter_colorpicker:
+  pro_image_editor:
 
 dev_dependencies:
   flutter_test:
