@@ -437,14 +437,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
-  image_downloader_web:
-    dependency: "direct main"
-    description:
-      name: image_downloader_web
-      sha256: c2cd7814dc7d1e895880c378f589dbf306a848a23bf0b93c71f61f48494b6916
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.7"
   image_size_getter:
     dependency: transitive
     description:
@@ -717,14 +709,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
-  pro_image_editor:
-    dependency: "direct main"
-    description:
-      name: pro_image_editor
-      sha256: "49fdcfba89ea1e5aa8b36c7b1fb1866c1383335c85f1025053bb8acf6b3e16b5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.9.2"
   pub_semver:
     dependency: transitive
     description:

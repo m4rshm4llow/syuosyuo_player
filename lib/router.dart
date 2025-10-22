@@ -9,7 +9,6 @@ import 'package:syuosyuo_player/pages/artists_screen.dart';
 import 'package:syuosyuo_player/pages/credit_screen.dart';
 import 'package:syuosyuo_player/pages/home_screen.dart';
 import 'package:syuosyuo_player/pages/main_scaffold.dart';
-import 'package:syuosyuo_player/pages/paint_screen.dart';
 import 'package:syuosyuo_player/pages/reading_aloud_screen.dart';
 import 'package:syuosyuo_player/pages/search_screen.dart';
 import 'package:syuosyuo_player/pages/singing_relay_screen.dart';
@@ -68,7 +67,6 @@ final router = GoRouter(
         TypedGoRoute<WatchPageRoute>(path: '/watch'),
         TypedGoRoute<CreditPageRoute>(path: '/credit'),
         TypedGoRoute<ToolPageRoute>(path: '/tool'),
-        TypedGoRoute<PaintPageRoute>(path: '/paint'),
       ],
     ),
   ],
@@ -207,14 +205,5 @@ class ToolPageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return ToolScreen();
-  }
-}
-
-class PaintPageRoute extends GoRouteData {
-  const PaintPageRoute();
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return PaintScreen();
   }
 }
